@@ -38,7 +38,7 @@ impl Worker {
     pub fn discover_link(server: String, code: String) -> Result<(), Box<dyn error::Error>> {
         let code = code
             .strip_prefix(&format!("{}/", server))
-            .unwrap_or(&server)
+            .unwrap_or(&code)
             .to_string();
 
         let config = ureq::Agent::config_builder()
