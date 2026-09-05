@@ -11,6 +11,14 @@ pub struct CLI {
     #[arg(short, long)]
     pub server: Option<String>,
 
+    /// Link lifetime duration. For example, 12d means 12 days
+    #[arg(short, long)]
+    pub lifetime: Option<String>,
+    
+    /// Limit of clicks for a link
+    #[arg(short, long)]
+    pub clicks: Option<i64>,
+
     #[command(subcommand)]
     pub command: Option<Commands>
 }

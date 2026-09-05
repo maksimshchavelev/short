@@ -1,5 +1,6 @@
 use clap::Parser;
 use dotenv::dotenv;
+use duration_str::parse;
 use short::cli;
 use short::net::Worker;
 use std::error;
@@ -27,7 +28,16 @@ fn main() -> Result<(), Box<dyn error::Error>> {
         }
         None => {
             if let Some(url) = cli.url {
-                Worker::create_link(server, url)?;
+                let lifetime = cli.lifetime.map(|value| {
+                    parse(value).unwrap_or_else(|e| {
+                        eprintln!("Failed to parse lifetime argument: {e}");
+                        process::exit(1);
+                    })
+                });
+
+                Worker::create_link(server, url, lifetime, cli.clicks)?;
+            } else {
+                eprintln!("URL argument not found");
             }
         }
     }

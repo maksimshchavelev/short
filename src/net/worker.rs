@@ -11,8 +11,17 @@ impl Worker {
     /// Create new short code by long URL and print final short link
     /// # Returns
     /// Nothing or error
-    pub fn create_link(server: String, url: String) -> Result<(), Box<dyn error::Error>> {
-        let request = CreateLinkRequest { url };
+    pub fn create_link(
+        server: String,
+        url: String,
+        lifetime: Option<std::time::Duration>,
+        clicks_limit: Option<i64>,
+    ) -> Result<(), Box<dyn error::Error>> {
+        let request = CreateLinkRequest {
+            url,
+            lifetime_seconds: lifetime.map(|value| value.as_secs() as i64),
+            clicks_limit,
+        };
 
         let config = ureq::Agent::config_builder()
             .http_status_as_error(false)

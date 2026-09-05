@@ -9,3 +9,4 @@ serde = { version = "1", features = ["derive"] }
 dotenv = "0.15.0"
 clap = { version = "4", features = ["derive"] }
 chrono = { version = "0.4", features = ["serde"] }
+duration-str = "0.21.0"
