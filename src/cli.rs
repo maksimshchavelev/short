@@ -1,7 +1,8 @@
 use clap::{Parser, Subcommand};
 
-/// CLI for working with the server
+/// CLI for working with the url shortener server
 #[derive(Parser)]
+#[command(version = env!("CARGO_PKG_VERSION"))]
 pub struct CLI {
     /// Long URL.
     pub url: Option<String>,
@@ -14,7 +15,7 @@ pub struct CLI {
     /// Link lifetime duration. For example, 12d means 12 days
     #[arg(short, long)]
     pub lifetime: Option<String>,
-    
+
     /// Limit of clicks for a link
     #[arg(short, long)]
     pub clicks: Option<i64>,
