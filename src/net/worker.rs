@@ -72,7 +72,7 @@ impl Worker {
             println!("{:<16} {}", "Clicks limit:", clicks_limit);
 
             println!(
-                "{:<16} {}",
+                "{:<16} {} UTC",
                 "Created at:",
                 response.created_at.format("%d.%m.%Y %H:%M:%S")
             );
@@ -82,7 +82,7 @@ impl Worker {
                 .map(|date| date.format("%d.%m.%Y %H:%M:%S").to_string())
                 .unwrap_or_else(|| "N/A".to_string());
 
-            println!("{:<16} {}", "Expires at:", expires_at);
+            println!("{:<16} {} UTC", "Expires at:", expires_at);
         } else {
             Self::log_error_response(response)?;
         }
