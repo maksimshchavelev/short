@@ -1,11 +1,28 @@
 use serde::Deserialize;
 
 /// JSON response from a server. Use it to parse successful 2xx answers
+/// to link create requests
 #[derive(Deserialize, Debug)]
-pub struct Response {
+#[allow(dead_code)]
+pub struct LinkCreated {
     /// Original URL
     pub url: String,
 
     /// Generated short code
     pub code: String,
+}
+
+/// JSON response from a server. Use it to parse failed 4xx answers
+#[derive(Deserialize, Debug)]
+#[allow(dead_code)]
+pub struct FailedResponse {
+    /// Title of error
+    pub title: String,
+
+    /// Type of error
+    #[serde(rename = "type")]
+    pub error_type: String,
+
+    /// What's happened?
+    pub detail: String,
 }
