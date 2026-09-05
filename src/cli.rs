@@ -4,7 +4,7 @@ use clap::{Parser, Subcommand};
 #[derive(Parser)]
 pub struct CLI {
     /// Long URL.
-    pub url: String,
+    pub url: Option<String>,
 
     /// Shortener's server URL.
     /// You can set the SHORTENER_SERVER environment variable instead

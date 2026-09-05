@@ -21,7 +21,16 @@ fn main() -> Result<(), Box<dyn error::Error>> {
             }
         });
 
-    Worker::create_link(server, cli.url)?;
+    match cli.command {
+        Some(cli::Commands::Discover { code }) => {
+            Worker::discover_link(server, code)?;
+        }
+        None => {
+            if let Some(url) = cli.url {
+                Worker::create_link(server, url)?;
+            }
+        }
+    }
 
     Ok(())
 }
