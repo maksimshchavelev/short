@@ -50,8 +50,8 @@ Possible output:
 Original URL:    https://example.com/
 Count of clicks: 0
 Clicks limit:    10
-Created at:      05.09.2026 15:14:26
-Expires at:      06.09.2026 15:14:26
+Created at:      05.09.2026 15:14:26 UTC
+Expires at:      06.09.2026 15:14:26 UTC
 ```
 
 # Building
