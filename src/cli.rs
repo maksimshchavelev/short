@@ -12,7 +12,7 @@ pub struct CLI {
     pub server: Option<String>,
 
     #[command(subcommand)]
-    command: Option<Commands>
+    pub command: Option<Commands>
 }
 
 #[derive(Subcommand)]
